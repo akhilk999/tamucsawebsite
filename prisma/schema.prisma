@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+  output = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("POSTGRES_URL") // uses connection pooling
+//   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model Officer {
+  id            String    @default(cuid()) @id
+  name          String?
+  position      String?
+  email         String?   @unique
+  major         String?
+  imageUrl      String?   
+  year          Int?
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+  @@map(name: "officers")
+}

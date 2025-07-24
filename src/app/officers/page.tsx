@@ -1,5 +1,7 @@
 import { Metadata } from "next";
-import { RiFacebookFill } from "react-icons/ri";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 const OfficerPage = () => {
     return (
